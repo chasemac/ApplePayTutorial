@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stickerCell" rowHeight="250" id="qcM-R3-ap3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stickerCell" rowHeight="250" id="qcM-R3-ap3" customClass="StickerTableViewCell" customModule="ApplePayTutorial" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcM-R3-ap3" id="CB0-BF-nas">
@@ -50,7 +50,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catHoldingPizza" translatesAutoresizingMaskIntoConstraints="NO" id="1bu-K7-KPE">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kittenPizza" translatesAutoresizingMaskIntoConstraints="NO" id="1bu-K7-KPE">
                                                     <rect key="frame" x="50" y="71" width="275" height="168.5"/>
                                                 </imageView>
                                             </subviews>
@@ -67,6 +67,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="1bu-K7-KPE" secondAttribute="trailing" constant="50" id="iPy-J0-dQT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageInCell" destination="1bu-K7-KPE" id="D6T-vk-Ofh"/>
+                                            <outlet property="nameLabel" destination="FN9-jH-rgP" id="bp8-gC-Vre"/>
+                                            <outlet property="priceLabel" destination="BSZ-Kr-gHH" id="uwQ-zA-dOH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -108,6 +113,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="catHoldingPizza" width="240" height="200"/>
+        <image name="kittenPizza" width="240" height="200"/>
     </resources>
 </document>
