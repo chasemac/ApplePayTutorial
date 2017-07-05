@@ -43,7 +43,23 @@ class ProductDetailViewController: UIViewController {
     }
     
     func applePayTapped() {
-        print("pay time")
+        let request = PKPaymentRequest()
+        request.supportedNetworks = [.amex, .visa, .masterCard]
+        request.countryCode = "US"
+        request.currencyCode = "USD"
+        request.merchantIdentifier = "merchant.bio.chase.applepaytutorial"
+        request.merchantCapabilities = .capability3DS
+        
+        let stickerSummary = PKPaymentSummaryItem(label: "Sticker of Cat", amount: NSDecimalNumber(value: 2.67))
+        let stickerKitten = PKPaymentSummaryItem(label: "Sticker of Kitten", amount: NSDecimalNumber(value: 2.67))
+        let stickerDiscount = PKPaymentSummaryItem(label: "Cat Discount", amount: NSDecimalNumber(value: -2.00))
+        let total = PKPaymentSummaryItem(label: "Sticker Cove", amount: stickerSummary.amount.adding(stickerKitten.amount).adding(stickerDiscount.amount))
+        
+        request.paymentSummaryItems = [stickerSummary, stickerKitten, stickerDiscount, total]
+        
+        let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
+        // in the completion handler you can change the background
+        present(applePayController, animated: true, completion: nil)
     }
 
     @IBAction func creditCardBtnPressed(_ sender: Any) {
