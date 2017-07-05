@@ -14,6 +14,7 @@
 		0EC701271F0D64EA00B36966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC701251F0D64EA00B36966 /* LaunchScreen.storyboard */; };
 		0EC7012F1F0D6DF500B36966 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7012E1F0D6DF500B36966 /* Sticker.swift */; };
 		0EC701311F0D728700B36966 /* StickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC701301F0D728700B36966 /* StickerTableViewCell.swift */; };
+		0EC701331F0D7C7E00B36966 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC701321F0D7C7E00B36966 /* ProductDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0EC701281F0D64EA00B36966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EC7012E1F0D6DF500B36966 /* Sticker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
 		0EC701301F0D728700B36966 /* StickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerTableViewCell.swift; sourceTree = "<group>"; };
+		0EC701321F0D7C7E00B36966 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				0EC701281F0D64EA00B36966 /* Info.plist */,
 				0EC7012E1F0D6DF500B36966 /* Sticker.swift */,
 				0EC701301F0D728700B36966 /* StickerTableViewCell.swift */,
+				0EC701321F0D7C7E00B36966 /* ProductDetailViewController.swift */,
 			);
 			path = ApplePayTutorial;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			files = (
 				0EC7011F1F0D64EA00B36966 /* ViewController.swift in Sources */,
 				0EC701311F0D728700B36966 /* StickerTableViewCell.swift in Sources */,
+				0EC701331F0D7C7E00B36966 /* ProductDetailViewController.swift in Sources */,
 				0EC7012F1F0D6DF500B36966 /* Sticker.swift in Sources */,
 				0EC7011D1F0D64EA00B36966 /* AppDelegate.swift in Sources */,
 			);

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -87,11 +88,96 @@
                     <navigationItem key="navigationItem" title="Sticker Cove" id="RAH-bb-T23"/>
                     <connections>
                         <outlet property="tableView" destination="fvz-E7-ugw" id="A0l-du-L76"/>
+                        <segue destination="2Ns-Pq-0l5" kind="show" identifier="detailSegue" id="Twp-38-s9G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1032.8" y="776.76161919040487"/>
+        </scene>
+        <!--Product Detail View Controller-->
+        <scene sceneID="Kaf-li-E9u">
+            <objects>
+                <viewController id="2Ns-Pq-0l5" customClass="ProductDetailViewController" customModule="ApplePayTutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nfn-ua-JrH"/>
+                        <viewControllerLayoutGuide type="bottom" id="9q5-FL-2Ts"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tr4-d6-JgO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE CAT STICKER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x1w-7e-wMd">
+                                <rect key="frame" x="50" y="79" width="275" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="A7L-OH-kJs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kittenPizza" translatesAutoresizingMaskIntoConstraints="NO" id="M3F-jl-hSF">
+                                <rect key="frame" x="50" y="134" width="275" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="wFL-2a-GRS"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4.99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGF-NG-tae">
+                                <rect key="frame" x="50" y="454" width="275" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="HPy-c8-HaD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TRL-7L-Zao">
+                                <rect key="frame" x="66" y="500" width="243" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBZ-K8-s4e">
+                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgF-Dm-8Vs">
+                                        <rect key="frame" x="126.5" y="0.0" width="116.5" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Credit Card"/>
+                                        <connections>
+                                            <action selector="creditCardBtnPressed:" destination="2Ns-Pq-0l5" eventType="touchUpInside" id="gHV-k6-ue2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xOn-ue-r2f"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="TRL-7L-Zao" secondAttribute="trailing" constant="50" id="5y9-f9-EQj"/>
+                            <constraint firstItem="TRL-7L-Zao" firstAttribute="top" secondItem="ZGF-NG-tae" secondAttribute="bottom" constant="20" id="I66-ly-yR3"/>
+                            <constraint firstItem="M3F-jl-hSF" firstAttribute="top" secondItem="x1w-7e-wMd" secondAttribute="bottom" constant="20" id="NW2-1W-U06"/>
+                            <constraint firstItem="M3F-jl-hSF" firstAttribute="leading" secondItem="Tr4-d6-JgO" secondAttribute="leading" constant="50" id="PBI-WB-wws"/>
+                            <constraint firstAttribute="trailing" secondItem="M3F-jl-hSF" secondAttribute="trailing" constant="50" id="WTp-GO-7nR"/>
+                            <constraint firstItem="TRL-7L-Zao" firstAttribute="leading" secondItem="Tr4-d6-JgO" secondAttribute="leadingMargin" constant="50" id="dDY-GT-dnF"/>
+                            <constraint firstItem="ZGF-NG-tae" firstAttribute="leading" secondItem="Tr4-d6-JgO" secondAttribute="leading" constant="50" id="gzc-fy-W48"/>
+                            <constraint firstAttribute="trailing" secondItem="ZGF-NG-tae" secondAttribute="trailing" constant="50" id="leZ-ZT-8IQ"/>
+                            <constraint firstItem="x1w-7e-wMd" firstAttribute="top" secondItem="nfn-ua-JrH" secondAttribute="bottom" constant="15" id="o2s-Ha-twn"/>
+                            <constraint firstAttribute="trailing" secondItem="x1w-7e-wMd" secondAttribute="trailing" constant="50" id="oTe-jc-6Ys"/>
+                            <constraint firstItem="x1w-7e-wMd" firstAttribute="leading" secondItem="Tr4-d6-JgO" secondAttribute="leading" constant="50" id="qMq-1A-iko"/>
+                            <constraint firstItem="ZGF-NG-tae" firstAttribute="top" secondItem="M3F-jl-hSF" secondAttribute="bottom" constant="20" id="t61-4e-hQb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="applePayView" destination="sBZ-K8-s4e" id="xmb-GZ-GAj"/>
+                        <outlet property="imageView" destination="M3F-jl-hSF" id="Dod-l0-i3O"/>
+                        <outlet property="nameLabel" destination="x1w-7e-wMd" id="YUc-ga-Ucv"/>
+                        <outlet property="priceLabel" destination="ZGF-NG-tae" id="C4m-4T-rvi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQH-9q-J5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855" y="777"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="785-gH-nFl">

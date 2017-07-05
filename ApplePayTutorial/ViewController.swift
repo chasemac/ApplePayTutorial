@@ -39,7 +39,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return UITableViewCell()
 
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let sticker = self.stickers[indexPath.row]
+        self.performSegue(withIdentifier: "detailSegue", sender: sticker)
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailVC = segue.destination as? ProductDetailViewController {
+            if sender != nil {
+                if let sticker = sender as? Sticker {
+                    detailVC.sticker = sticker
+                }
+            }
+        }
+    }
 
 
 }
