@@ -9,7 +9,7 @@
 import UIKit
 import PassKit
 
-class ProductDetailViewController: UIViewController {
+class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewControllerDelegate {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -42,6 +42,32 @@ class ProductDetailViewController: UIViewController {
         self.applePayView.addSubview(button)
     }
     
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        completion(.success)
+        // You can grab email and stuff from here
+    }
+    
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+
+    
+    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didSelect shippingMethod: PKShippingMethod, completion: @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> Void) {
+        completion(.success, allTheSummaryItems(shippingMethod: shippingMethod))
+    }
+    
+    
+    
+    func allTheSummaryItems(shippingMethod: PKShippingMethod) -> [PKPaymentSummaryItem] {
+        let stickerSummary = PKPaymentSummaryItem(label: "Sticker of Cat", amount: NSDecimalNumber(value: 2.67))
+        let stickerKitten = PKPaymentSummaryItem(label: "Sticker of Kitten", amount: NSDecimalNumber(value: 2.67))
+        let stickerDiscount = PKPaymentSummaryItem(label: "Cat Discount", amount: NSDecimalNumber(value: -2.00))
+        let shipping = PKPaymentSummaryItem(label: shippingMethod.label, amount: shippingMethod.amount)
+        let total = PKPaymentSummaryItem(label: "Sticker Cove", amount: stickerSummary.amount.adding(stickerKitten.amount).adding(stickerDiscount.amount).adding(shippingMethod.amount).adding(shipping.amount))
+        return [stickerSummary, stickerKitten, stickerDiscount, shipping, total]
+    }
+    
     func applePayTapped() {
         let request = PKPaymentRequest()
         request.supportedNetworks = [.amex, .visa, .masterCard]
@@ -50,14 +76,30 @@ class ProductDetailViewController: UIViewController {
         request.merchantIdentifier = "merchant.bio.chase.applepaytutorial"
         request.merchantCapabilities = .capability3DS
         
-        let stickerSummary = PKPaymentSummaryItem(label: "Sticker of Cat", amount: NSDecimalNumber(value: 2.67))
-        let stickerKitten = PKPaymentSummaryItem(label: "Sticker of Kitten", amount: NSDecimalNumber(value: 2.67))
-        let stickerDiscount = PKPaymentSummaryItem(label: "Cat Discount", amount: NSDecimalNumber(value: -2.00))
-        let total = PKPaymentSummaryItem(label: "Sticker Cove", amount: stickerSummary.amount.adding(stickerKitten.amount).adding(stickerDiscount.amount))
+        request.requiredShippingAddressFields = [.email, .name]
         
-        request.paymentSummaryItems = [stickerSummary, stickerKitten, stickerDiscount, total]
+        let freeShipping = PKShippingMethod(label: "Free Shipping", amount: NSDecimalNumber(value: 0.0))
+        freeShipping.identifier = "freeShipping"
+        freeShipping.detail = "Usually ships in 5-12 days"
+        
+        let expressShipping = PKShippingMethod(label: "Express Shipping", amount: NSDecimalNumber(value: 5.49))
+        expressShipping.identifier = "expressShipping"
+        expressShipping.detail = "Usually ships in 2-5 days"
+        
+        let overNightShipping = PKShippingMethod(label: "Over Night Shipping", amount: NSDecimalNumber(value: 16.49))
+        overNightShipping.identifier = "overNightShipping"
+        overNightShipping.detail = "Usually ships in 1 day"
+        
+        
+        request.shippingMethods = [freeShipping, expressShipping, overNightShipping]
+
+        
+        request.paymentSummaryItems = allTheSummaryItems(shippingMethod: freeShipping)
         
         let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
+        
+        applePayController.delegate = self
+        
         // in the completion handler you can change the background
         present(applePayController, animated: true, completion: nil)
     }
