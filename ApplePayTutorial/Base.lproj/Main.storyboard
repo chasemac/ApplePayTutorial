@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D8v-1Z-gf4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sticker Cove-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="ApplePayTutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,94 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fvz-E7-ugw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stickerCell" rowHeight="250" id="qcM-R3-ap3">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qcM-R3-ap3" id="CB0-BF-nas">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE CAT STICKER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN9-jH-rgP">
+                                                    <rect key="frame" x="50" y="10" width="275" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Cq1-oN-Div"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$4.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSZ-Kr-gHH">
+                                                    <rect key="frame" x="50" y="40" width="275" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="XwU-UC-ilS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catHoldingPizza" translatesAutoresizingMaskIntoConstraints="NO" id="1bu-K7-KPE">
+                                                    <rect key="frame" x="50" y="71" width="275" height="168.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="FN9-jH-rgP" secondAttribute="trailing" constant="50" id="6Cn-EU-ty1"/>
+                                                <constraint firstItem="1bu-K7-KPE" firstAttribute="top" secondItem="BSZ-Kr-gHH" secondAttribute="bottom" constant="10" id="CaH-nk-oqU"/>
+                                                <constraint firstItem="BSZ-Kr-gHH" firstAttribute="leading" secondItem="CB0-BF-nas" secondAttribute="leading" constant="50" id="GxF-XW-CgY"/>
+                                                <constraint firstItem="FN9-jH-rgP" firstAttribute="leading" secondItem="CB0-BF-nas" secondAttribute="leading" constant="50" id="HkZ-zi-SUU"/>
+                                                <constraint firstItem="1bu-K7-KPE" firstAttribute="leading" secondItem="CB0-BF-nas" secondAttribute="leading" constant="50" id="Oqs-7a-uOl"/>
+                                                <constraint firstItem="BSZ-Kr-gHH" firstAttribute="top" secondItem="FN9-jH-rgP" secondAttribute="bottom" constant="5" id="SFa-dQ-fK8"/>
+                                                <constraint firstItem="FN9-jH-rgP" firstAttribute="top" secondItem="CB0-BF-nas" secondAttribute="top" constant="10" id="Vyf-rP-MKZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="BSZ-Kr-gHH" secondAttribute="trailing" constant="50" id="WSG-Pl-nSU"/>
+                                                <constraint firstAttribute="bottom" secondItem="1bu-K7-KPE" secondAttribute="bottom" constant="10" id="ZPr-v4-nxF"/>
+                                                <constraint firstAttribute="trailing" secondItem="1bu-K7-KPE" secondAttribute="trailing" constant="50" id="iPy-J0-dQT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fvz-E7-ugw" secondAttribute="trailing" id="TeJ-yK-2Ku"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fvz-E7-ugw" secondAttribute="bottom" id="Vfz-WM-ozK"/>
+                            <constraint firstItem="fvz-E7-ugw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="j2Z-B1-GkF"/>
+                            <constraint firstItem="fvz-E7-ugw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pXc-n7-VZZ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Sticker Cove" id="RAH-bb-T23"/>
+                    <connections>
+                        <outlet property="tableView" destination="fvz-E7-ugw" id="A0l-du-L76"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1032.8" y="776.76161919040487"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="785-gH-nFl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D8v-1Z-gf4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FUp-Y2-1Rq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7lP-oX-REs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vvn-VY-oEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232.80000000000001" y="776.76161919040487"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="catHoldingPizza" width="240" height="200"/>
+    </resources>
 </document>
