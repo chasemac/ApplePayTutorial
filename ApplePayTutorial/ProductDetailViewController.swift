@@ -17,6 +17,8 @@ class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewC
     
     @IBOutlet weak var applePayView: UIView!
     
+    var email: String?
+    
     var sticker = Sticker()
     
     
@@ -25,7 +27,7 @@ class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewC
 
         nameLabel.text = sticker.name
         imageView.image = sticker.image
-        priceLabel.text = sticker.price
+        priceLabel.text = "$\(sticker.price!)"
         
         var button : PKPaymentButton
         if PKPaymentAuthorizationViewController.canMakePayments() {
@@ -43,12 +45,24 @@ class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewC
     }
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
+        
+        self.email = payment.shippingContact?.emailAddress
         completion(.success)
+        
         // You can grab email and stuff from here
     }
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true) {
+            if let email = self.email {
+                self.performSegue(withIdentifier: "thankYouSegue", sender: email)
+                self.email = nil
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            
+        }
     }
     
 
@@ -60,12 +74,12 @@ class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewC
     
     
     func allTheSummaryItems(shippingMethod: PKShippingMethod) -> [PKPaymentSummaryItem] {
-        let stickerSummary = PKPaymentSummaryItem(label: "Sticker of Cat", amount: NSDecimalNumber(value: 2.67))
-        let stickerKitten = PKPaymentSummaryItem(label: "Sticker of Kitten", amount: NSDecimalNumber(value: 2.67))
+        let stickerSummary = PKPaymentSummaryItem(label: sticker.name, amount: NSDecimalNumber(string: sticker.price))
+
         let stickerDiscount = PKPaymentSummaryItem(label: "Cat Discount", amount: NSDecimalNumber(value: -2.00))
         let shipping = PKPaymentSummaryItem(label: shippingMethod.label, amount: shippingMethod.amount)
-        let total = PKPaymentSummaryItem(label: "Sticker Cove", amount: stickerSummary.amount.adding(stickerKitten.amount).adding(stickerDiscount.amount).adding(shippingMethod.amount).adding(shipping.amount))
-        return [stickerSummary, stickerKitten, stickerDiscount, shipping, total]
+        let total = PKPaymentSummaryItem(label: "Sticker Cove", amount: stickerSummary.amount.adding(stickerDiscount.amount).adding(shippingMethod.amount).adding(shipping.amount))
+        return [stickerSummary, stickerDiscount, shipping, total]
     }
     
     func applePayTapped() {
@@ -76,7 +90,7 @@ class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewC
         request.merchantIdentifier = "merchant.bio.chase.applepaytutorial"
         request.merchantCapabilities = .capability3DS
         
-        request.requiredShippingAddressFields = [.email, .name]
+        request.requiredShippingAddressFields = .email
         
         let freeShipping = PKShippingMethod(label: "Free Shipping", amount: NSDecimalNumber(value: 0.0))
         freeShipping.identifier = "freeShipping"
@@ -105,6 +119,16 @@ class ProductDetailViewController: UIViewController, PKPaymentAuthorizationViewC
     }
 
     @IBAction func creditCardBtnPressed(_ sender: Any) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailVC = segue.destination as? ThankYouViewController {
+            if sender != nil {
+                if let email = sender as? String {
+                    detailVC.email = email
+                }
+            }
+        }
     }
 
 }

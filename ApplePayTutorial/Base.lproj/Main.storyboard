@@ -173,11 +173,73 @@
                         <outlet property="imageView" destination="M3F-jl-hSF" id="Dod-l0-i3O"/>
                         <outlet property="nameLabel" destination="x1w-7e-wMd" id="YUc-ga-Ucv"/>
                         <outlet property="priceLabel" destination="ZGF-NG-tae" id="C4m-4T-rvi"/>
+                        <segue destination="b4m-nt-iaQ" kind="presentation" identifier="thankYouSegue" id="VBp-7s-DaL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQH-9q-J5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1855" y="777"/>
+        </scene>
+        <!--Thank You View Controller-->
+        <scene sceneID="6U4-vX-npn">
+            <objects>
+                <viewController id="b4m-nt-iaQ" customClass="ThankYouViewController" customModule="ApplePayTutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VSt-KQ-fev"/>
+                        <viewControllerLayoutGuide type="bottom" id="sIc-sE-Zpg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dYF-Qz-He8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwY-C5-uvO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUb-Ff-yWL">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="DPu-aN-zOz"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="JXh-Xd-DV1">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="boq-H1-Jp4">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="b4m-nt-iaQ" id="Tix-3g-Gkf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXZ-rV-THQ">
+                                <rect key="frame" x="50" y="114" width="275" height="20.5"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qwY-C5-uvO" firstAttribute="leading" secondItem="dYF-Qz-He8" secondAttribute="leading" id="3gt-UC-Pvb"/>
+                            <constraint firstItem="pXZ-rV-THQ" firstAttribute="top" secondItem="SUb-Ff-yWL" secondAttribute="bottom" constant="50" id="EKp-GF-OTJ"/>
+                            <constraint firstItem="qwY-C5-uvO" firstAttribute="top" secondItem="dYF-Qz-He8" secondAttribute="top" id="H4B-tZ-3eg"/>
+                            <constraint firstAttribute="trailing" secondItem="qwY-C5-uvO" secondAttribute="trailing" id="Jv7-ER-HKZ"/>
+                            <constraint firstItem="pXZ-rV-THQ" firstAttribute="leading" secondItem="dYF-Qz-He8" secondAttribute="leading" constant="50" id="LIS-FU-W2X"/>
+                            <constraint firstAttribute="trailing" secondItem="pXZ-rV-THQ" secondAttribute="trailing" constant="50" id="P0l-sD-XqQ"/>
+                            <constraint firstAttribute="trailing" secondItem="SUb-Ff-yWL" secondAttribute="trailing" id="TZ9-d3-Nht"/>
+                            <constraint firstItem="SUb-Ff-yWL" firstAttribute="leading" secondItem="dYF-Qz-He8" secondAttribute="leading" id="UaG-jt-71g"/>
+                            <constraint firstItem="SUb-Ff-yWL" firstAttribute="top" secondItem="VSt-KQ-fev" secondAttribute="bottom" id="fkg-b7-uEC"/>
+                            <constraint firstItem="sIc-sE-Zpg" firstAttribute="top" secondItem="qwY-C5-uvO" secondAttribute="bottom" id="wDU-V1-0aR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="conView" destination="qwY-C5-uvO" id="Jx1-Jq-Hda"/>
+                        <outlet property="thankYouLabel" destination="pXZ-rV-THQ" id="N8U-Rx-Nb7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVh-eQ-G2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2592.8000000000002" y="776.76161919040487"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="785-gH-nFl">

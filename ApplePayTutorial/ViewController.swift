@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let sticker = self.stickers[indexPath.row]
 //            cell.createStickerCell(sticker: sticker)
             cell.nameLabel.text = sticker.name
-            cell.priceLabel.text = sticker.price
+            cell.priceLabel.text = "$\(sticker.price!)"
             cell.imageInCell.image = sticker.image
             
             return cell

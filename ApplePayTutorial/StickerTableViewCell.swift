@@ -17,7 +17,7 @@ class StickerTableViewCell: UITableViewCell {
 
     func createStickerCell(sticker: Sticker) {
         nameLabel.text = sticker.name
-        priceLabel.text = sticker.price
+        priceLabel.text = "$\(sticker.price!)"
         imageInCell.image = sticker.image   
     }
     override func awakeFromNib() {
